@@ -1,0 +1,54 @@
+#!/bin/bash
+
+RED='\033[1;31m'
+BLUE='\033[1;34m'
+GREEN='\033[1;32m'
+NC='\033[0m' # No Color
+
+clear
+echo -e "${BLUE}The script will begin working shortly. ${NC}"
+sleep "3"
+clear
+
+echo -e "${BLUE}Upgrading system... ${NC}"
+sleep "0.25"
+sudo pacman -Syyu
+sleep "0.25"
+echo -e "${GREEN}System upgraded! ${NC}"
+sleep "1"
+clear
+
+echo -e "${BLUE}Installing Neofetch and custom Neofetch theme... ${NC}"
+sleep "0.25"
+sudo pacman -S neofetch git
+sleep "0.25"
+git clone https://github.com/avunit1/neofetch
+cd /
+sudo mkdir neocfg
+cd
+cd neofetch
+sudo mv ascii.txt ~/neocfg
+sudo mv config.conf ~/neocfg
+sudo rm ~/.config/neofetch/config.conf
+sudo cp ~/neocfg/config.conf ~/.config/neofetch/
+sudo alias neofetch='neofetch --ascii ~/neocfg/ascii.txt
+neofetch
+sleep "3"
+echo -e "${GREEN}Neofetch and theme installed! ${NC}"
+sleep "1"
+clear
+
+echo -e "${RED}Deleting TEMP and Trash files. If you want to recover those files, press CTRL+C NOW! ${NC}"
+cd /tmp/
+sudo rm -r *
+cd
+cd /home/$USER/.local/share/Trash
+sudo rm -r *
+cd
+sudo cd /root/.local/share/Trash
+sudo rm -r *
+echo -e "${GREEN}Done! ${NC}"
+sleep "1"
+cd
+clear
+neofetch
