@@ -31,7 +31,7 @@ sudo mv ascii.txt ~/neocfg
 sudo mv config.conf ~/neocfg
 sudo rm ~/.config/neofetch/config.conf
 sudo cp ~/neocfg/config.conf ~/.config/neofetch/
-sudo alias neofetch='neofetch --ascii ~/neocfg/ascii.txt
+sudo alias neofetch='neofetch --ascii ~/neocfg/ascii.txt'
 neofetch
 sleep "3"
 echo -e "${GREEN}Neofetch and theme installed! ${NC}"
